@@ -2,13 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' show dotenv;
 
 void main() async {
-  runApp(const MyApp());
+  await dotenv.load();
+  String? apiKey = dotenv.env['API_KEY'];
+
+  runApp(MyApp(apiKey: apiKey));
+
   WidgetsFlutterBinding.ensureInitialized();
 
+  DefaultFirebaseOptions defaultOptions = DefaultFirebaseOptions(apiKey: apiKey ?? '');
+
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
+      options: defaultOptions.ios
   );
 
   FirebaseDatabase database = FirebaseDatabase.instance;
@@ -45,7 +52,9 @@ Future<void> initalizeDb() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String? apiKey;
+
+  const MyApp({super.key, required this.apiKey});
 
   // This widget is the root of your application.
   @override
