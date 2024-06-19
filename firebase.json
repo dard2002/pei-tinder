@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"ios":{"default":{"projectId":"pei-tinder","appId":"1:179458109324:ios:94bb02a636de797bb670a9","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"pei-tinder","configurations":{"ios":"1:179458109324:ios:94bb02a636de797bb670a9"}}}}}}
