@@ -15,7 +15,7 @@ void main() async {
   DefaultFirebaseOptions defaultOptions = DefaultFirebaseOptions(apiKey: apiKey ?? '');
 
   await Firebase.initializeApp(
-      options: defaultOptions.ios
+      options: defaultOptions.currentPlatform
   );
 
   FirebaseDatabase database = FirebaseDatabase.instance;
